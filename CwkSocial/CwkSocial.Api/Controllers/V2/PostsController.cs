@@ -1,18 +1,18 @@
 ﻿using Cwk.Domain.Modles;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CwkSocial.Api.Controllers
+namespace CwkSocial.Api.Controllers.V2
 {
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [Route("api/v1/[controller]")]
     public class PostsController : Controller
     {
-
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetById(int id)
         {
-            var post = new Post { Id = id, Text= "Hallo, Dunia!!!"};
+            var post = new Post { Id = id, Text = "Hallo, Dari Controller V{version:apiVersion}!!!" };
             return Ok(post);
         }
     }
